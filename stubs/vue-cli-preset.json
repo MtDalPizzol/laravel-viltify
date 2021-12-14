@@ -1,0 +1,27 @@
+{
+    "useConfigFiles": true,
+    "plugins": {
+        "@vue/cli-plugin-babel": {},
+        "@vue/cli-plugin-eslint": {
+            "config": "standard",
+            "lintOn": ["save"]
+        },
+        "vue-cli-plugin-vuetify": {
+            "preset": "configure",
+            "replaceComponents": true,
+            "iconFont": "mdi",
+            "installFonts": false,
+            "locale": "en",
+            "useAlaCarte": true,
+            "useCustomProperties": false,
+            "usePolyfill": false,
+            "useTheme": false,
+            "useV3": false,
+            "useVite": false
+        },
+        "vue-cli-plugin-tailwind": {
+            "initConfig": false
+        }
+    },
+    "vueVersion": "2"
+}
