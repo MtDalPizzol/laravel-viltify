@@ -31,10 +31,13 @@ class ToastServiceProvider extends ServiceProvider
             $toast = resolve(ToastService::class);
 
             $args = func_get_args();
+            $type = 'success';
 
-            $type = $args[0];
+            if (count($args) > 1 && in_array($args[1], ['success', 'info', 'warning', 'error'])) {
+                $type = $args[1];
 
-            array_shift($args);
+                unset($args[1]);
+            }
 
             $toast->{$type}(...$args);
 

@@ -13,10 +13,6 @@ class ToastService
 
     public function __call($method, $args)
     {
-        if (method_exists($this, $method)) {
-            return $this->{$method}();
-        }
-
         array_splice($args, 1, 0, [$method]);
 
         $this->flashedToasts[] = $this->make(...$args);
