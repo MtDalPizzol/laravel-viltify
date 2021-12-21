@@ -1,4 +1,6 @@
-<p align="center" style="margin: 24px"><img src="stubs/resources/src/assets/logo.png" alt="Laravel VILTify"></p>
+<p align="center">
+    <img src="stubs/resources/src/assets/logo.png" alt="Laravel VILTify">
+</p>
 
 <p align="center">
     <a href="https://packagist.org/packages/dalpizzol/laravel-viltify">
@@ -69,12 +71,18 @@ composer remove dalpizzol/laravel-viltify
 # Enter the resources folder
 cd resources
 
-# Lift the devserver
+# Lift the assets devserver
 npm run serve
+
+# Lift the PHP server in another terminal
+# (if you're not already running one)
+php artisan serve
 ```
 
 > **HEADS UP**:
-> By the default, the devserver will lift at port `8080`.
+
+
+> Be aware that you're running two servers, just like when you use Laravel Mix. Your PHP application runs at port `80` while the devserver runs at `8080`. So, in your browser, you navigate to your PHP application at port `80`, for instance: `http://localhost`.
 
 ## **Troubleshooting**
 
