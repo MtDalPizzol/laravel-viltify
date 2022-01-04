@@ -1,5 +1,7 @@
 <template>
   <v-container>
+
+    <Head title="Dashboard" />
     <v-row justify="center">
       <v-col cols="12">
         <div class="pa-8">
