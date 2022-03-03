@@ -48,7 +48,7 @@ class InstallCommand extends Command
 
     protected function installInertiaLaravel()
     {
-        $this->requireComposerPackages('inertiajs/inertia-laravel:^0.4.5');
+        $this->requireComposerPackages('inertiajs/inertia-laravel');
 
         (new Filesystem)->copy(__DIR__ . '/../../stubs/app/Http/Middleware/HandleInertiaRequests.php', app_path('Http/Middleware/HandleInertiaRequests.php'));
         (new Filesystem)->copy(__DIR__ . '/../../stubs/config/inertia.php', config_path('inertia.php'));
@@ -276,6 +276,10 @@ class InstallCommand extends Command
         (new Filesystem)->delete(resource_path('src/App.vue'));
     }
 
+    protected function updateEslintRules() {
+        $this->replaceInFile('rules: {', "rules: {\n\t\t'vue/multi-word-component-names': 'off',", resource_path('.eslintrc.js'));
+    }
+
     protected function registerToastProvider()
     {
         $this->replaceInFile('App\Providers\RouteServiceProvider::class,', "App\Providers\RouteServiceProvider::class,\n\t\tApp\Providers\ToastServiceProvider::class,", config_path('app.php'));
@@ -283,7 +287,7 @@ class InstallCommand extends Command
 
     protected function installTests()
     {
-        $this->requireComposerPackages('pestphp/pest:^1.21', 'pestphp/pest-plugin-laravel:^1.1');
+        $this->requireComposerPackages('pestphp/pest', 'pestphp/pest-plugin-laravel');
 
         (new Filesystem)->ensureDirectoryExists(base_path('tests/Feature/Auth'));
 
@@ -331,6 +335,7 @@ class InstallCommand extends Command
         $this->replaceVuetifyConfig();
         $this->copyTailwindConfig();
         $this->copyResources();
+        $this->updateEslintRules();
         $this->registerToastProvider();
         $this->installTests();
         $this->ignoreDevServerFolders();

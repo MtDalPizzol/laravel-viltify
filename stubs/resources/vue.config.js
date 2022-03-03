@@ -39,20 +39,26 @@ module.exports = {
   
   devServer: {
     // Public needs to be explicitly set, since we're not using the defaults
-    public: process.env.VUE_APP_ASSET_URL,
+    // public: process.env.VUE_APP_ASSET_URL,
+
+    client: {
+      webSocketURL: process.env.VUE_APP_ASSET_URL + 'ws'
+    },
     
-    // During development, we want to write ONLY the HTML files to the disk.
-    // This is needed because Laravel won't be able to read the view directly from memory,
-    // but, our assets will still be served directly from memory.
-    // So, we're writing to disk ONLY if the output file path ends with .blade.php
-    writeToDisk: (filePath) => {
-      return /\.blade\.php$/.test(filePath)
+    devMiddleware: {
+      // During development, we want to write ONLY the HTML files to the disk.
+      // This is needed because Laravel won't be able to read the view directly from memory,
+      // but, our assets will still be served directly from memory.
+      // So, we're writing to disk ONLY if the output file path ends with .blade.php
+      writeToDisk: (filePath) => {
+        return /\.blade\.php$/.test(filePath)
+      },
     },
     
     // Allows you to point any host to the devserver port.
     // Eg.: http://assets.localhost:8080 will also work
     // Alternatively you could use the "allowedHosts" option
-    disableHostCheck: true,
+    allowedHosts: 'all',
     
     // Avoid CORS problems
     headers: {

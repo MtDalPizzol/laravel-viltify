@@ -29,7 +29,9 @@ InertiaProgress.init()
 
 createInertiaApp({
   resolve: name => import('./pages/' + name),
-  setup ({ el, App, props }) {
+  setup ({ el, App, props, plugin }) {
+    Vue.use(plugin)
+
     new Vue({
       vuetify,
       render: h => h(App, props)
