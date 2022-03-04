@@ -43,7 +43,9 @@
 
 * **Operating System**: This package should work on **MacOS** and **Linux**. If you're using **Windows**, you're gonna need **WSL**.
 
-* **Vue CLI**: Under the hood, this package will call the [**Vue CLI**](https://cli.vuejs.org/) tool. Make sure you have **Vue CLI V4** installed before continuing. If you don't, [**the installation**](https://cli.vuejs.org/guide/installation.html) is fairly simple.
+* **Laravel 9**
+
+* **Vue CLI**: Under the hood, this package will call the [**Vue CLI**](https://cli.vuejs.org/) tool. Make sure you have **Vue CLI V5** installed before continuing. If you don't, [**the installation**](https://cli.vuejs.org/guide/installation.html) is fairly simple.
 
 ## **Quick Start**
 
@@ -201,7 +203,9 @@ If you need a separate build for an entirely different endpoint, for instance, a
   }
 ```
 
-**3.** Then, you need to instruct Inertia to use the `app-admin.blade.php` view when rendering an admin page.
+**3.** Duplicate the `resources/src/main.js` and rename it to `resources/src/admin.js`.
+
+**4.** Then, you need to instruct Inertia to use the `app-admin.blade.php` view when rendering an admin page.
 
 ```php
 return Inertia::setRootView('app-admin')
@@ -215,8 +219,6 @@ When using Laravel Mix, client side environment settings are put into `MIX_` pre
 ## Drawbacks
 
 Since the intent here is to use Vuetify, we're still using Vue 2 and Webpack instead of Vue 3 and Vite, since Vuetify support for Vue 3 hasn't released yet.
-
-Another thing is that, since we're using Vue CLI v4, it uses PostCSS 7, and newer versions of Tailwind requires PostCSS 8. Because of that, we can't use recently released TailwindCSS v3, and when using ^v2.1.x JIT mode is quite problematic with compatibility build. So, I decided to keep JIT disabled by default. HOWEVER, since we're using Vuetify, TailwindCSS will probably be used sparingly. So, chances are that this will not be a huge problem.
 
 ## **License**
 
