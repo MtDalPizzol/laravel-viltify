@@ -153,7 +153,7 @@ class InstallCommand extends Command
     protected function installVueGithubButton()
     {
         return $this->runCommand(
-            ['npm', 'install', 'vue-github-button'],
+            ['npm', 'install', 'vue-github-button@1'],
             'Couldn\'t install Vue Github Button.',
             'Vue Github Button installed successfuly',
             resource_path()
@@ -276,7 +276,8 @@ class InstallCommand extends Command
         (new Filesystem)->delete(resource_path('src/App.vue'));
     }
 
-    protected function updateEslintRules() {
+    protected function updateEslintRules()
+    {
         $this->replaceInFile('rules: {', "rules: {\n\t\t'vue/multi-word-component-names': 'off',", resource_path('.eslintrc.js'));
     }
 
